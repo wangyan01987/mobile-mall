@@ -1,0 +1,299 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/guidePage/guidePage",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/tabBar/home/home",
+			"style": {
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": true,
+				"navigationBarBackgroundColor": "#ff2c29",
+				"backgroundColorTop": "#ff2c29",
+				"app-plus": {
+					"titleNView": false, //禁用原生导航栏
+					"softinputNavBar": "none",
+					"subNVues": [{
+						"id": "homeTitleNvue", // 唯一标识  
+						"path": "pages/tabBar/home/subNvue/homeTitleNvue", // 页面路径  
+						"type": "navigationBar"
+					}]
+				}
+			}
+		},
+		{
+			"path": "pages/tabBar/category/category",
+			"style": {
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": false, //禁用原生导航栏
+					"bounce":"none"
+				}
+			}
+		},
+		{
+			"path": "pages/tabBar/user/user",
+			"style": {
+				"enablePullDownRefresh": true,
+				"backgroundTextStyle": "light",
+				"navigationBarBackgroundColor": "#ff2c29",
+				"backgroundColorTop": "#ff2c29",
+				"navigationBarTextStyle": "white",
+				"app-plus": {
+					"titleNView": false, //禁用原生导航栏
+					"subNVues": [{
+						"id": "userTitleNvue", // 唯一标识  
+						"path": "pages/tabBar/user/subNvue/userTitleNvue", // 页面路径  
+						"type": "navigationBar"
+					}]
+				}
+			}
+		},
+		{
+			"path": "pages/goods/goods-list/goods-list",
+			"style": {
+				"navigationBarTitleText": "",
+				// "enablePullDownRefresh": true,
+				"app-plus": {
+					"bounce": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/goods/goods",
+			"style": {
+				"navigationBarTitleText": "商品详情",
+				"navigationBarBackgroundColor": "#f1f1f1",
+				"onReachBottomDistance": 50,
+				"h5": {
+					"titleNView": false
+				},
+				"app-plus": {
+					"titleNView": false, //禁用原生导航栏
+					"bounce": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"navigationBarTextStyle": "black",
+				"app-plus": {
+					"bounce": "none", //关闭窗口回弹效果
+					"softinputNavBar": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/login/register",
+			"style": {
+				"navigationBarTitleText": "注册账号",
+				"navigationBarTextStyle": "black",
+				"app-plus": {
+					"bounce": "none", //关闭窗口回弹效果
+					"softinputNavBar": "none"
+				}
+			}
+		}, {
+			"path": "pages/login/useragreement",
+			"style": {
+				"navigationBarTitleText": "用户协议",
+				"navigationBarTextStyle": "black",
+				"app-plus": {
+					"bounce": "none", //关闭窗口回弹效果
+					"softinputNavBar": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/login/resetpasswd",
+			"style": {
+				"navigationBarTitleText": "重置密码",
+				"navigationBarTextStyle": "black",
+				"app-plus": {
+					"bounce": "none", //关闭窗口回弹效果
+					"softinputNavBar": "none"
+				}
+			}
+		}, {
+			"path": "pages/user/setting/setting",
+			"style": {
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTitleText": "设置",
+				"backgroundColorTop": "#ffffff",
+				"backgroundColorBottom": "#f3f3f3"
+			}
+		}, {
+			"path": "pages/msg/msg",
+			"style": {
+				"enablePullDownRefresh": true,
+				"navigationBarTitleText": "消息列表",
+				"navigationBarBackgroundColor": "#ff2c29",
+				"navigationBarTextStyle": "white"
+			}
+		}, {
+			"path": "pages/msg/msgDetail",
+			"style": {
+				"navigationBarTitleText": "消息详情",
+				"navigationBarBackgroundColor": "#ff2c29",
+				"navigationBarTextStyle": "white"
+			}
+		}, {
+			"path": "pages/user/collect/collect",
+			"style": {
+				"navigationBarTitleText": "我的收藏",
+				"app-plus": {
+					"bounce": "none"
+				}
+			}
+		}, {
+			"path": "pages/user/person/person",
+			"style": {
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTitleText": "个人设置",
+				"backgroundColorTop": "#ffffff",
+				"backgroundColorBottom": "#f3f3f3"
+			}
+		}, {
+			"path": "pages/user/address/address",
+			"style": {
+				"navigationBarBackgroundColor": "#ffffff",
+				"navigationBarTitleText": "地址管理",
+				"backgroundColorTop": "#ffffff",
+				"backgroundColorBottom": "#ffffff"
+			}
+		}, {
+			"path": "pages/user/address/edit/edit",
+			"style": {
+				"navigationBarBackgroundColor": "#ffffff",
+				"navigationBarTitleText": "编辑收件人地址",
+				"backgroundColorTop": "#ffffff",
+				"backgroundColorBottom": "#ffffff"
+			}
+		}, {
+			"path": "pages/user/suggestion/suggestion",
+			"style": {
+				"navigationBarTitleText": "意见反馈",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/tabBar/category/searchPage/searchPage",
+			"style": {
+				"navigationBarTitleText": "搜索页"
+			}
+		}, {
+			"path": "pages/shop/shop",
+			"style": {
+				"navigationBarTitleText": "商铺首页",
+				"navigationBarBackgroundColor": "#f06c7a",
+				"navigationBarTextStyle": "white",
+				"enablePullDownRefresh": true,
+				"titleNView": false, //禁用原生导航栏
+				"app-plus": {
+					"titleNView": false, //禁用原生导航栏
+					"bounce": "none"
+
+				}
+			}
+		}, {
+			"path": "pages/shop/shopDetail/shopDetail",
+			"style": {
+				"navigationBarTitleText": "商铺简介",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#ff2c29"
+			}
+		}, {
+			"path": "pages/tabBar/home/chooseCity/chooseCity",
+			"style": {}
+		}
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "",
+		"navigationBarBackgroundColor": "#ffffff",
+		"backgroundColor": "#ffffff",
+		"backgroundColorTop": "#ffffff",
+		"backgroundColorBottom": "#ffffff",
+		"app-plus": {
+			"compatible": {
+				"ignoreVersion": true //true表示忽略版本检查提示框，HBuilderX1.9.0及以上版本支持  
+			}
+		}
+	},
+	"tabBar": {
+		"color": "#464854",
+		"selectedColor": "#ff2c29",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/tabBar/home/home",
+				"iconPath": "static/img/tabBar/home.png",
+				"selectedIconPath": "static/img/tabBar/home-on.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/tabBar/category/category",
+				"iconPath": "static/img/tabBar/category.png",
+				"selectedIconPath": "static/img/tabBar/category-on.png",
+				"text": "分类"
+			},
+			{
+				"pagePath": "pages/tabBar/user/user",
+				"iconPath": "static/img/tabBar/user.png",
+				"selectedIconPath": "static/img/tabBar/user-on.png",
+				"text": "我的"
+			}
+		]
+	},
+	"condition": { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式（list 的索引项）
+		"list": [{
+				"name": "home",
+				"path": "pages/tabBar/home/home"
+			},
+			{
+				"name": "classify",
+				"path": "pages/tabBar/category/category"
+			},
+			{
+				"name": "myself",
+				"path": "pages/tabBar/user/user"
+			},
+			{
+				"name": "goods",
+				"path": "pages/goods/goods"
+			},
+			{
+				"name": "goodsList",
+				"path": "pages/goods/goods-list/goods-list"
+			},
+			{
+				"name": "search",
+				"path": "pages/tabBar/category/searchPage/searchPage"
+			},
+			{
+				"name": "shop",
+				"query": "id=123",
+				"path": "pages/shop/shop"
+			},
+			{
+				"name": "login",
+				"path": "pages/login/login"
+			},
+			{
+				"name": "msg",
+				"path": "pages/msg/msg"
+			}
+		]
+	}
+}
+
+
+// {
+// 	"name": "msg",
+// 	"path": "pages/msg/msg"
+// },

@@ -1,0 +1,158 @@
+<template>
+	<div class="content" :style="{height:statusBarHeight+44+'wx'}">
+		<!-- 此页面不知为何，不设置状态栏高度就布局异常 -->
+		<div class="status-bar" :style="{height:statusBarHeight+'wx'}"></div>
+		<div class="nav">
+			<view class="min-badge" @click="toMsg">
+				<text class="icon tongzhi">{{ iconTongzhi }}</text>
+				<view v-if='count' class="min-badge-count"><text class='count_text'>{{finalCount}}</text></view>
+			</view>
+			<!-- <text @click="toMsg" class="icon tongzhi">{{ iconTongzhi }}</text> -->
+			<text @click="toSetting" class="icon setting">{{ iconSetting }}</text>
+		</div>
+	</div>
+</template>
+<script> 
+import Api from '@/common/api.js'
+import {isLogin} from '@/common/untils.js'
+export default {
+	data() {
+		return {
+			subNVue: uni.getCurrentSubNVue(),
+			iconSetting: '\ue64f',
+			iconTongzhi: '\ue729',
+			statusBarHeight:20,
+			count: "",
+			maxCount: 99
+		};
+	},
+	beforeCreate() {
+		const domModule = weex.requireModule('dom');
+		domModule.addRule('fontFace', {
+			fontFamily: 'iconfont',
+			src: "url('https://at.alicdn.com/t/font_1087442_fe5vigfwr5m.ttf')"
+		});
+	},
+	mounted() {
+		this.setStatusBarHeight();
+		uni.$on('getMsg', (msg) => {
+			this.userInfo = msg;
+			this.getNum();
+		})
+		this.userInfo = uni.getStorageSync('userInfo');
+		this.getNum();
+	},
+	computed: {
+		finalCount() {
+			return this.count > this.maxCount ? `${this.maxCount}+` : this.count
+		},
+	},
+	methods: {
+		async getNum(){
+			if (this.userInfo && this.userInfo.id) {
+				//获取消息数量
+				let msgNum = await Api.apiCall('get', Api.message.feedBackNum, {
+					UserId: this.userInfo.id
+				}, true);
+				if (msgNum.code == 200) {
+					this.count = msgNum.data;
+				}
+			} else {
+				this.count = '';
+			}
+		},
+		setStatusBarHeight(){
+			uni.getSystemInfo({
+				success: (res)=>{
+					console.log('设置状态栏高度：'+res.statusBarHeight);
+					this.statusBarHeight = res.statusBarHeight;
+				}
+			});
+		},
+		toMsg() {
+			if(isLogin(this.userInfo&&this.userInfo.id)){
+				uni.navigateTo({
+					url: '../../msg/msg'
+				})
+			}
+		},
+		toSetting() {
+			uni.navigateTo({
+				url: '../../user/setting/setting'
+			});
+		}
+	}
+};
+</script>
+<style>
+.icon {
+	font-family: iconfont;
+	font-size: 42px;
+}
+.content {
+	background-color: #ff2c29;
+	flex-direction: column;
+}
+.status-bar {
+	flex: 1;
+}
+
+.nav {
+	width: 710px;
+	height: 88px;
+	margin-left: 20px;
+	position: relative;
+	
+	justify-content: center;
+	align-items: center;
+}
+
+.tongzhi,
+.setting {
+	width: 60px;
+	height: 88px;
+	text-align: center;
+	line-height: 88px;
+	color: #fff;
+	position: absolute;
+}
+.tongzhi {
+	/* right: 60px; */
+	position: relative;
+}
+.setting {
+	right: 0px;
+}
+.min-badge {
+		display: inline-block;
+		line-height: 1;
+		vertical-align: middle;
+		width: 80px;
+		box-sizing: border-box;
+		right:40px;
+		position: absolute;
+	}
+
+	.min-badge-count {
+		position: absolute;
+		transform: translateY(12);
+		height: 30px;
+		left:30px;
+		min-width: 30px;
+		color: #ff2c29;
+		line-height: 30px;
+		text-align: center;
+		padding: 0 10px;
+		font-size: 20px;
+		white-space: nowrap;
+		font-weight: 600;
+		z-index: 10;
+		color:#fff;
+		box-sizing: border-box;
+	}
+
+	.count_text {
+		color:#fff;
+		font-weight: 600;
+	}
+</style>

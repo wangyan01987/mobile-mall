@@ -1,0 +1,132 @@
+{
+    "name" : "中住租赁",
+    "appid" : "__UNI__9B7BF21",
+    "description" : "",
+    "versionName" : "1.5.5",
+    "versionCode" : 1,
+    "transformPx" : false,
+    "app-plus" : {
+        "usingComponents" : true, //是否启用`自定义组件模式`，为true表示新的`自定义组件模式` ，否则为`template模板模式`   
+        "softinput" : {
+            "navBar" : "none" // 是否显示软键盘上的导航条  
+        },
+        /* 5+App特有相关 */
+        "splashscreen" : {
+            "alwaysShowBeforeRender" : true,
+            "waiting" : true,
+            "autoclose" : true,
+            "delay" : 0
+        },
+        "modules" : {
+            "Maps" : {}
+        },
+        /* 模块配置 */
+        "distribute" : {
+            "orientation" : [ "portrait-primary" ],
+            /* 应用发布信息 */
+            "android" : {
+                /* android打包配置 */
+                "permissions" : [
+                    "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CAMERA\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+                    "<uses-permission android:name=\"android.permission.INTERNET\"/>",
+                    "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
+                    "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+                    "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+                    "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
+                ]
+            },
+            "ios" : {
+                "privacyDescription" : {
+                    "NSCameraUsageDescription" : "“中住租赁”想访问您的相机，以便拍摄图片上传头像",
+                    "NSPhotoLibraryUsageDescription" : "“中住租赁”想访问您的相册，以便上传头像",
+                    "NSLocationAlwaysAndWhenInUseUsageDescription" : "允许“中住租赁”访问您的位置,根据位置信息为您展示就近的供应商?",
+                    "NSLocationWhenInUseUsageDescription" : "允许“中住租赁”访问您的位置,根据位置信息为您展示就近的供应商?",
+                    "NSBluetoothAlwaysUsageDescription" : "允许“中住租赁”使用蓝牙功能？"
+                }
+            },
+            /* ios打包配置 */
+            "sdkConfigs" : {
+                "push" : {},
+                "statics" : {},
+                "maps" : {}
+            },
+            "icons" : {
+                "android" : {
+                    "xxxhdpi" : "",
+                    "xxhdpi" : "",
+                    "xhdpi" : "",
+                    "hdpi" : ""
+                },
+                "ios" : {
+                    "iphone" : {
+                        "app@2x" : "unpackage/AppIcon.appiconset/icon120-1.png",
+                        "app@3x" : "unpackage/AppIcon.appiconset/icon80.png",
+                        "notification@2x" : "unpackage/AppIcon.appiconset/icon40.png",
+                        "settings@3x" : "unpackage/AppIcon.appiconset/icon87.png",
+                        "settings@2x" : "unpackage/AppIcon.appiconset/icon58.png",
+                        "spotlight@3x" : "unpackage/AppIcon.appiconset/icon120.png",
+                        "spotlight@2x" : "unpackage/AppIcon.appiconset/icon80.png",
+                        "notification@3x" : "unpackage/AppIcon.appiconset/icon60.png"
+                    },
+                    "appstore" : "unpackage/AppIcon.appiconset/icon1024.png"
+                }
+            },
+            "splashscreen" : {
+                "ios" : {
+                    "iphone" : {
+                        "retina35" : "unpackage/splash/Default@2x.png",
+                        "retina40l" : "unpackage/splash/Default-Landscape-568h@2x.png",
+                        "retina40" : "unpackage/splash/Default-568h@2x.png",
+                        "retina47l" : "unpackage/splash/Default-Landscape-667h@2x.png",
+                        "retina47" : "unpackage/splash/Default-667h@2x.png",
+                        "retina55l" : "unpackage/splash/Default-Landscape-736h@3x.png",
+                        "retina55" : "unpackage/splash/Default-736h@3x.png",
+                        "iphonexl" : "unpackage/splash/Default-Landscape-812h@3x.png",
+                        "iphonex" : "unpackage/splash/Default-812h@3x.png",
+                        "portrait-896h@3x" : "unpackage/splash/Default-896h@3x.png",
+                        "landscape-896h@3x" : "unpackage/splash/Default-Landscape-896h@3x.png",
+                        "portrait-896h@2x" : "unpackage/splash/Default-896h@2x.png",
+                        "landscape-896h@2x" : "unpackage/splash/Default-Landscape-896h@2x.png"
+                    }
+                }
+            }
+        }
+    },
+    /* SDK配置 */
+    "quickapp" : {},
+    /* 快应用特有相关 */
+    "mp-weixin" : {
+        /* 小程序特有相关 */
+        "appid" : "wxcaeb080f3bd211ec",
+        "setting" : {
+            "urlCheck" : true,
+            "minified" : true
+        },
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : ""
+            }
+        }
+    },
+    "h5" : {
+        "devServer" : {
+            "https" : false
+        },
+        "router" : {
+            "base" : "/mobile-mall/"
+        },
+        "title" : "中住租赁"
+    }
+}

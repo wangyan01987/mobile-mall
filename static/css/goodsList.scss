@@ -1,0 +1,95 @@
+.goods-list {
+		/*  #ifdef  APP-PLUS  */
+		// padding-bottom:100upx;
+		/*  #endif  */
+		background:#fff;
+		margin:0 4%;
+		border-radius:10upx;
+		.title {
+			font-size:32upx;
+			padding: 24upx 4% ;
+			text-align:left;
+		}
+
+		.loading-text {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 60upx;
+			color: #979797;
+			font-size: 24upx;
+		}
+
+		.product-list {
+			width: 92%;
+			padding: 0 4% 3vw 4%;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+
+			.product {
+				width: 48%;
+				border-radius: 12upx;
+				background-color: #fff;
+				margin: 0 0 20upx 0;
+				box-shadow: 0upx 5upx 25upx rgba(0, 0, 0, 0.1);
+
+				image {
+					width: 100%;
+					height:268upx;
+					border-radius: 12upx 12upx 0 0;
+				}
+
+				.name {
+					width: 92%;
+					padding: 10upx 4%;
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp: 2;
+					text-align: justify;
+					overflow: hidden;
+					font-size: 30upx;
+				}
+
+				.info {
+					padding: 0 0 20upx 20upx;
+
+					.pro {
+						font-size: 28upx;
+						margin-bottom: 10upx;
+						font-weight: 600;
+						color:$mainfotC;
+					}
+					.pro_type{
+						margin-right:14upx;
+					}
+					.pro_title,
+					.pro_company,
+					.pro_position{
+						width: 100%;
+						white-space: nowrap;
+						text-overflow: ellipsis;
+						overflow: hidden;
+					}
+
+					.pro_company {
+						color: #555;
+						font-size:26upx;
+						color:$mainFontSubC;
+					}
+					.pro_position{
+						font-size:24upx;
+						color:$mainFontSubC;
+					}
+					.price {
+						margin-top: 15upx;
+						color: $mainColor;
+						font-size: 30upx;
+						font-weight: 600;
+						margin-bottom: 10upx;
+					}
+				}
+			}
+		}
+}

@@ -1,0 +1,234 @@
+<template>
+	<div class="content" :style="{height:statusBarHeight+44+'wx'}">
+		<div class="status-bar" :style="{height:statusBarHeight+'wx'}"></div>
+		<div class="nav">
+			<text class="icon location" @click='toCity'>{{ iconLocation }}</text>
+			<text class="location-city-text" @click='toCity'>{{ city }}</text>
+			<div class="input-box" @click="goSearch">
+				<input class="input-box-input" @click="goSearch" placeholder="请输入搜索内容" disabled="true"  />
+				<text class="icon search">{{ iconSearch }}</text>
+			</div>
+			<view class="min-badge" @click="toMsg">
+				<text class="icon tongzhi">{{ iconTongzhi }}</text>
+				<view v-if='count' class="min-badge-count"><text class='count_text'>{{finalCount}}</text></view>
+			</view>
+
+		</div>
+	</div>
+</template>
+<script>
+	import Api from '@/common/api.js';
+	import {isLogin} from '@/common/untils.js'
+	export default {
+		data() {
+			return {
+				city: '北京',
+				subNVue: uni.getCurrentSubNVue(),
+				iconSearch: '\ue628',
+				iconLocation: '\ue611',
+				iconYuyin: '\ue64e',
+				iconTongzhi: '\ue729',
+				statusBarHeight: 20,
+				count: "",
+				maxCount: 99
+			};
+		},
+		beforeCreate() {
+			const domModule = weex.requireModule('dom');
+			domModule.addRule('fontFace', {
+				fontFamily: 'iconfont',
+				src: "url('https://at.alicdn.com/t/font_1087442_fe5vigfwr5m.ttf')"
+			});
+		},
+		 mounted() {
+			this.init();
+			uni.$on('getMsg', (msg) => {
+				this.userInfo = msg;
+				this.getNum();
+			})
+			this.userInfo = uni.getStorageSync('userInfo');
+			this.getNum();
+		},
+		computed: {
+			finalCount() {
+				return this.count > this.maxCount ? `${this.maxCount}+` : this.count
+			},
+		},
+		methods: {
+			async getNum(){
+				if (this.userInfo && this.userInfo.id) {
+					//获取消息数量
+					let msgNum = await Api.apiCall('get', Api.message.feedBackNum, {
+						UserId: this.userInfo.id
+					}, 1);
+					if (msgNum.code == 200) {
+						this.count = msgNum.data;
+					}
+				} else {
+					this.count = '';
+				}
+			},
+			//选择城市
+			toCity(){
+				uni.navigateTo({
+					url:'/pages/tabBar/home/chooseCity/chooseCity'
+				})
+			},
+			toMsg() {
+				if(isLogin(this.userInfo&&this.userInfo.id)){
+					uni.navigateTo({
+						url: '../../msg/msg'
+					})
+				}
+			},
+			async init() {
+				uni.getSystemInfo({
+					success: (res) => {
+						this.statusBarHeight = res.statusBarHeight;
+					}
+				});
+				this.nVueTitle = uni.getCurrentSubNVue();
+				this.nVueTitle.onMessage(res => {
+					let type = res.data.type;
+					switch (type) {
+						case 'location':
+							this.setCity(res.data.city);
+							break;
+						default:
+							break;
+					}
+				});
+
+			},
+			setCity(city) {
+				this.city = city;
+			},
+			goSearch() {
+				uni.navigateTo({
+					url:'/pages/tabBar/category/searchPage/searchPage'
+				})
+			},
+			destroyed() {
+				uni.$off('getMsg');
+			},
+		}
+	};
+</script>
+<style>
+	.icon {
+		font-family: iconfont;
+		font-size: 42px;
+	}
+
+	.content {
+		background-color: #ff2c29;
+		flex-direction: column;
+	}
+
+	.status-bar {
+		flex: 1;
+	}
+
+	.nav {
+		width: 750px;
+		padding: 0 20px;
+		position: relative;
+		height: 88px;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.location,
+	.yuyin,
+	.tongzhi {
+		width: 60px;
+		height: 88px;
+		text-align: center;
+		line-height: 88px;
+		color:#FFFFFF;
+	}
+
+	.tongzhi {
+		/* width:80px; */
+		/* text-align:left; */
+	}
+
+	.location {
+		color: #FFFFFF;
+	}
+
+	.location-city-text {
+		width: 60px;
+		height: 88px;
+		line-height: 88px;
+		font-size: 26px;
+		color: #FFFFFF;
+	}
+
+
+	.tongzhi {
+		color: #FFFFFF;
+	}
+
+	.input-box {
+		width: 525px;
+		margin-left: 5px;
+		height: 60px;
+		border-radius: 60px;
+		background-color: rgba(255,255,255,0.2);
+		position: relative;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.input-box-input {
+		width: 330px;
+		height: 60px;
+		font-size: 28px;
+		margin-left: 30px;
+		placeholder-color: rgba(255,255,255,0.3);
+	}
+
+	.search {
+		width: 60px;
+		font-size: 34px;
+		padding-right: 30px;
+		color: #FFFFFF;
+	}
+
+	.min-badge {
+		position: relative;
+		display: inline-block;
+		line-height: 1;
+		vertical-align: middle;
+		width: 80px;
+		box-sizing: border-box;
+		padding-right: 20px;
+	}
+
+	.min-badge-count {
+		position: absolute;
+		transform: translateY(12);
+		height: 30px;
+		left:30px;
+		border-radius: 15px;
+		min-width: 30px;
+		color: #FFFFFF;
+		line-height: 30px;
+		text-align: center;
+		padding: 0 10px;
+		font-size: 20px;
+		white-space: nowrap;
+		font-weight: 600;
+		z-index: 10;
+		/* box-shadow: 0 0 0 1px #fff; */
+		box-sizing: border-box;
+	}
+
+	.count_text {
+		color: #FFFFFF;
+		font-weight: 600;
+	}
+</style>
